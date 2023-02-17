@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.portfolio.back_portfolio.modelo.Ciudad;
 
 @Repository
-public interface CiudadRepository extends JpaRepository<Ciudad, Integer> {
+public interface CiudadRepository extends JpaRepository<Ciudad, Long> {
 
 }

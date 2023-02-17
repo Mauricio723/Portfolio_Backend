@@ -1,13 +1,10 @@
 package com.portfolio.back_portfolio.modelo;
 
-//import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,9 +20,16 @@ public class Ciudad {
 	private String provincia;
 	private String pais;
 	
-	/*@OneToMany(mappedBy="ciudad")
-	private List<Persona_02> listaPersonas;*/
+	/*
+	@OneToMany(mappedBy = "ciudad")
+	private List<Persona> listaPersonas;
 	
+	@OneToMany(mappedBy = "ciudad")
+	private List<Educacion> listaEducacion;
+	
+	@OneToMany(mappedBy = "ciudad")
+	private List<Trabajo> listaTrabajos;         */
+                                           		
 	public Ciudad() {
 		super();
 	}
@@ -68,6 +72,6 @@ public class Ciudad {
 
 	public void setPais(String pais) {
 		this.pais = pais;
-	}
-		
+	}	
+	
 }

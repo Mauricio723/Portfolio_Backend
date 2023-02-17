@@ -26,12 +26,12 @@ public class CiudadService implements ICiudadService {
 	}
 
 	@Override
-	public void deleteCiudad(Integer id) {
+	public void deleteCiudad(Long id) {
 		repoCiudad.deleteById(id);		
 	}
 
 	@Override
-	public Ciudad findCiudad(Integer id) {
+	public Ciudad findCiudad(Long id) {
 		Ciudad ciudadFind = repoCiudad.findById(id).orElse(null);
 		return ciudadFind;
 	}	

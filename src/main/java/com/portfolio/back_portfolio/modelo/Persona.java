@@ -1,12 +1,18 @@
 package com.portfolio.back_portfolio.modelo;
 
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,6 +34,9 @@ public class Persona {
 	private String ocupacion;	
 	
 	@Column(length=50)
+	private String tituloPrincipal;
+	
+	@Column(length=50)
 	private String fecha_nacimiento;
 	
 	@Column(length=10)
@@ -45,42 +54,45 @@ public class Persona {
 	@Column(length=100)
 	private String urlBanner;
 		
-	/*@ManyToOne
-	@JoinColumn(name="ciudad_id")
-	private Ciudad ciudad;*/
-
-	/*@OneToMany(mappedBy="persona")
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "ciudad_id")
+    private Ciudad ciudad;
+	
+	@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Educacion> listaEducacion;
-	 
-	@OneToMany(mappedBy="persona")
-	private List<Trabajo> listaTrabajo;
 	
-	@OneToMany(mappedBy="persona")
-	private List<Proyecto> listaProyecto;
+	@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Trabajo> listaTrabajos;
 	
-	@OneToMany(mappedBy="persona")
-	private List<Aptitud> listaAptitud;*/
+	@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Proyecto> listaProyectos;
 	
-	
+	@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Aptitud> listaAptitudes;
+		
 	public Persona() {
 		super();
 	}
 
-	public Persona(Long id, String nombre, String apellido, String ocupacion, 
-			       String fecha_nacimiento, String documento,
-			       String email, String acerca_de, String urlFoto, String urlBanner) {
+	
+	public Persona(Long id, String nombre, String apellido, String ocupacion, String tituloPrincipal,
+			String fecha_nacimiento, String documento, String email, String acerca_de, String urlFoto, String urlBanner,
+			Ciudad ciudad) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.ocupacion = ocupacion;
+		this.tituloPrincipal = tituloPrincipal;
 		this.fecha_nacimiento = fecha_nacimiento;
 		this.documento = documento;
-		this.email = email;		
+		this.email = email;
 		this.acerca_de = acerca_de;
 		this.urlFoto = urlFoto;
 		this.urlBanner = urlBanner;
+		this.ciudad = ciudad;
 	}
+
 
 	public Long getId() {
 		return id;
@@ -160,6 +172,48 @@ public class Persona {
 
 	public void setUrlBanner(String urlBanner) {
 		this.urlBanner = urlBanner;
+	}
+
+
+	public String getTituloPrincipal() {
+		return tituloPrincipal;
+	}
+
+
+	public void setTituloPrincipal(String tituloPrincipal) {
+		this.tituloPrincipal = tituloPrincipal;
+	}
+
+
+	public Ciudad getCiudad() {
+		return ciudad;
+	}
+
+
+	public void setCiudad(Ciudad ciudad) {
+		this.ciudad = ciudad;
+	}
+
+
+	public List<Educacion> getListaEducacion() {
+		return listaEducacion;
+	}
+
+
+	public List<Trabajo> getListaTrabajos() {
+		return listaTrabajos;
+	}
+
+
+	public List<Proyecto> getListaProyectos() {
+		return listaProyectos;
+	}
+
+
+	public List<Aptitud> getListaAptitudes() {
+		return listaAptitudes;
 	}	
+	
+	
 	
 }

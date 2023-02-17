@@ -1,37 +1,45 @@
 package com.portfolio.back_portfolio.modelo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="trabajos")
+@Table(name = "trabajos")
 public class Trabajo {
-	
+
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(nullable=false, updatable=false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(nullable = false, updatable = false)
 	private Integer id;
-	
+
 	private String nombreEmpresa;
 	private String puestoLaboral;
 	private int anioInicio;
 	private int anioFin;
 	private String descripcion;
-	
-	@ManyToOne
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "ciudad_id")
+	private Ciudad ciudad;
+
+	@ManyToOne()
+	@JoinColumn(name = "persona_id")
 	private Persona persona;
 
 	public Trabajo() {
 		super();
-	}
+	}	
 
-	public Trabajo(Integer id, String nombreEmpresa, String puestoLaboral, 
-			int anioInicio, int anioFin, String descripcion, Persona persona) {
+	public Trabajo(Integer id, String nombreEmpresa, String puestoLaboral, int anioInicio, int anioFin,
+			String descripcion, Ciudad ciudad, Persona persona) {
 		super();
 		this.id = id;
 		this.nombreEmpresa = nombreEmpresa;
@@ -39,6 +47,7 @@ public class Trabajo {
 		this.anioInicio = anioInicio;
 		this.anioFin = anioFin;
 		this.descripcion = descripcion;
+		this.ciudad = ciudad;
 		this.persona = persona;
 	}
 
@@ -96,6 +105,14 @@ public class Trabajo {
 
 	public void setPersona(Persona persona) {
 		this.persona = persona;
-	}	
+	}
+
+	public Ciudad getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(Ciudad ciudad) {
+		this.ciudad = ciudad;
+	}
 	
 }

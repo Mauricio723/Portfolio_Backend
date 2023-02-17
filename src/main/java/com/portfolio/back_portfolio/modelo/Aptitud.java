@@ -5,22 +5,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="aptitudes")
+@Table(name = "aptitudes")
 public class Aptitud {
 
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(nullable=false, updatable=false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(nullable = false, updatable = false)
 	private Integer id;
-	
-	private String nombre;
-	private String descripcion;	
 
-	@ManyToOne
+	private String nombre;
+	private String descripcion;
+
+	@ManyToOne()
+	@JoinColumn(name = "persona_id")
 	private Persona persona;
 
 	public Aptitud() {
@@ -65,6 +67,6 @@ public class Aptitud {
 
 	public void setPersona(Persona persona) {
 		this.persona = persona;
-	}	
-	
+	}
+
 }

@@ -1,12 +1,14 @@
 package com.portfolio.back_portfolio.modelo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,37 +21,39 @@ public class Educacion {
 	private Integer id;
 	
 	private String nombreInstitucion;
-	
-	@OneToOne
-	private Ciudad ciudad;
-	
+		
 	private String estudioCursado;
 	private int anioInicio;
 	private int anioFin;
 	private String descripcionCurso;
 	private int seTerminoCurso;
+		 
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "ciudad_id")
+    private Ciudad ciudad;
 	
-	@ManyToOne
+	@ManyToOne()
+	@JoinColumn(name="persona_id")
 	private Persona persona;
-
+	
 	public Educacion() {
 		super();
 	}
 
-	public Educacion(Integer id, String nombreInstitucion, Ciudad ciudad, 
-			String estudioCursado, int anioInicio, int anioFin, 
-			String descripcionCurso, int seTerminoCurso, Persona persona) {
+	public Educacion(Integer id, String nombreInstitucion, String estudioCursado, int anioInicio, int anioFin,
+			String descripcionCurso, int seTerminoCurso, Ciudad ciudad, Persona persona) {
 		super();
 		this.id = id;
 		this.nombreInstitucion = nombreInstitucion;
-		this.ciudad = ciudad;
 		this.estudioCursado = estudioCursado;
 		this.anioInicio = anioInicio;
 		this.anioFin = anioFin;
 		this.descripcionCurso = descripcionCurso;
 		this.seTerminoCurso = seTerminoCurso;
+		this.ciudad = ciudad;
 		this.persona = persona;
 	}
+
 
 	public Integer getId() {
 		return id;
@@ -122,5 +126,6 @@ public class Educacion {
 	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}	
+	
 	
 }

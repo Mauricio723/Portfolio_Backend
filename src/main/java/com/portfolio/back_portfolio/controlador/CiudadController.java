@@ -7,29 +7,42 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.portfolio.back_portfolio.modelo.Ciudad;
 import com.portfolio.back_portfolio.servicio.ICiudadService;
 
 @RestController
+@RequestMapping("myapi/ciudades")
 public class CiudadController {
 
 	@Autowired
-	private ICiudadService interfCiudadService;
+	private ICiudadService inciudadService;
 	
-	@GetMapping("/ciudades/traer_todas")
+	@GetMapping("/traer_todas")
 	public List<Ciudad> getCiudad() {
-		return interfCiudadService.getCiudades();
+		return inciudadService.getCiudades();
 	}
 	
-	@PostMapping("/ciudades/crear")
+	@PostMapping("/crear")
 	public void crearCiudad(@RequestBody Ciudad ciudadCreada) {
-		interfCiudadService.saveCiudad(ciudadCreada);
+		inciudadService.saveCiudad(ciudadCreada);
 	}
-	@DeleteMapping("/ciudades/eliminar/{id}")
-	public void eliminarCiudad(@PathVariable Integer id) {
-		interfCiudadService.deleteCiudad(id);
+	@DeleteMapping("/eliminar/{id}")
+	public void eliminarCiudad(@PathVariable Long id) {
+		inciudadService.deleteCiudad(id);
+	}
+	
+	@PutMapping("/modificar/{id}")
+	public void modificarCiudad (@PathVariable Long id, @RequestBody Ciudad ciudadParaModificar) {
+		Ciudad ciudadModificada = inciudadService.findCiudad(id);
+		ciudadModificada.setNombre(ciudadParaModificar.getNombre());
+		ciudadModificada.setProvincia(ciudadParaModificar.getProvincia());
+		ciudadModificada.setPais(ciudadParaModificar.getPais());
+		
+		inciudadService.saveCiudad(ciudadModificada);		
 	}
 }

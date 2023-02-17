@@ -9,76 +9,64 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.portfolio.back_portfolio.modelo.Persona;
-//import com.portfolio.back_portfolio.servicio.ICiudadService;
+import com.portfolio.back_portfolio.servicio.ICiudadService;
 import com.portfolio.back_portfolio.servicio.IPersonaService;
 
 @RestController
+@RequestMapping("myapi/personas")
 public class PersonaController {
 
 	@Autowired
-	private IPersonaService interfPersonaService;
+	private IPersonaService intPersonaService;
 	
-	//@Autowired
-	//private ICiudadService interfCiudadService;
-	
-	@GetMapping("/personas/traer_todas")
-	public List<Persona> getPersonas() {
-		return interfPersonaService.getPersonas();
-	}
-	
-	@PostMapping("/personas/crear")
-	public void creaarPersona(@RequestBody Persona personaCreada) {
+	@Autowired
+	private ICiudadService intCiudadService;
 		
-		interfPersonaService.savePersona(personaCreada);
+	@GetMapping("/traer_todas")
+	public List<Persona> getPersonas() {
+		return intPersonaService.getPersonas();
 	}
 	
-	@GetMapping("/personas/traer/{id}")
+	@PostMapping("/crear/{id_ciudad}")
+	public void creaarPersona(@RequestBody Persona personaCreada, @PathVariable Long id_ciudad) {		
+		personaCreada.setCiudad(intCiudadService.findCiudad(id_ciudad));
+		intPersonaService.savePersona(personaCreada);
+	}
+			
+	@GetMapping("/traer/{id}")
 	public Persona traerPersona(@PathVariable Long id) {		
-		return interfPersonaService.findPersona(id);
+		return intPersonaService.findPersona(id);
 	}
 	
-	@PutMapping("/personas/modificar/{id}")
-	public String modificarPersona (@PathVariable Long id, @RequestBody Persona personaParaModificar) {
-		Persona personaModificada = interfPersonaService.findPersona(id);
+	@PutMapping("/modificar/{id_persona}/{id_ciudad}")
+	public void modificarPersona (@RequestBody Persona personaParaModificar,
+			                      @PathVariable Long id_persona, 
+			                      @PathVariable Long id_ciudad) {
+		
+		Persona personaModificada = intPersonaService.findPersona(id_persona);
+		
 		personaModificada.setNombre(personaParaModificar.getNombre());
 		personaModificada.setApellido(personaParaModificar.getApellido());
 		personaModificada.setOcupacion(personaParaModificar.getOcupacion());
+		personaModificada.setTituloPrincipal(personaParaModificar.getTituloPrincipal());
 		personaModificada.setFecha_nacimiento(personaParaModificar.getFecha_nacimiento());
 		personaModificada.setDocumento(personaParaModificar.getDocumento());
 		personaModificada.setEmail(personaParaModificar.getEmail());
 		personaModificada.setAcerca_de(personaParaModificar.getAcerca_de());
 		personaModificada.setUrlFoto(personaParaModificar.getUrlFoto());
 		personaModificada.setUrlBanner(personaParaModificar.getUrlBanner());
+		personaModificada.setCiudad(intCiudadService.findCiudad(id_ciudad));
 		
-		interfPersonaService.savePersona(personaModificada);
-		
-		return "Persona modificada con id: " + id;
+		intPersonaService.savePersona(personaModificada);				
 	}
-	
-	@PostMapping("/personas/prueba_crear")
-	public void crearPersonaPrueba() {
 		
-		Persona nuevaPersona = new Persona(
-				(long) 0, "Salvador Mauricio", 
-				"Vilches Jerez", 
-				"Estudiante", 
-				"30/05/1972", 
-				"92401924", 
-				"salvadorvilches1972@gmail.com", 
-				"Texto acerca de Mauricio", 
-				"url foto de Mauricio", 
-				"url de banner del portfolio");
-		
-		interfPersonaService.savePersona(nuevaPersona);
-		
-	}
-	
-	@DeleteMapping("/personas/eliminar/{id}")
+	@DeleteMapping("/eliminar/{id}")
 	public void eliminarPersona(@PathVariable Long id) {
-		interfPersonaService.deletePersona(id);
+		intPersonaService.deletePersona(id);
 	}
 	
 }

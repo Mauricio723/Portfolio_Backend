@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -20,9 +21,10 @@ public class Proyecto {
 	private String nombre;
 	private String descripcion;
 	
-	@ManyToOne
+	@ManyToOne()
+	@JoinColumn(name="persona_id")
 	private Persona persona;
-
+	
 	public Proyecto() {
 		super();
 	}
