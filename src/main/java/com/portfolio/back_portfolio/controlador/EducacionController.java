@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +35,7 @@ public class EducacionController {
 		return intEducacionService.getEducaciones();
 	}
 	
-	@GetMapping("/crear/{id_persona}/{id_ciudad}")
+	@PostMapping("/crear/{id_persona}/{id_ciudad}")
 	public void crearEducacion(@RequestBody Educacion educacionCreada, 
 			                   @PathVariable Long id_persona, 
 			                   @PathVariable Long id_ciudad) {
@@ -49,9 +50,13 @@ public class EducacionController {
 		return intEducacionService.findEducacion(id);
 	}
 	
-	@PutMapping("/modificar/{id}")
-	public void modificarEducacion (@PathVariable Integer id, @RequestBody Educacion educacionParaModificar) {
-		Educacion educacionModificada = intEducacionService.findEducacion(id);
+	@PutMapping("/modificar/{id_educacion}/{id_ciudad}")
+	public void modificarEducacion (@PathVariable Integer id_educacion, 
+			                        @PathVariable Long id_ciudad, 
+			                        @RequestBody Educacion educacionParaModificar) {
+		
+		Educacion educacionModificada = intEducacionService.findEducacion(id_educacion);
+				
 		educacionModificada.setNombreInstitucion(educacionParaModificar.getNombreInstitucion());
 		educacionModificada.setNombreInstitucion(educacionParaModificar.getNombreInstitucion());
 		educacionModificada.setEstudioCursado(educacionParaModificar.getEstudioCursado());
@@ -59,6 +64,7 @@ public class EducacionController {
 		educacionModificada.setAnioFin(educacionParaModificar.getAnioFin());
 		educacionModificada.setDescripcionCurso(educacionParaModificar.getDescripcionCurso());
 		educacionModificada.setSeTerminoCurso(educacionParaModificar.getSeTerminoCurso());
+		educacionModificada.setCiudad(intCiudadService.findCiudad(id_ciudad));
 		
 		intEducacionService.saveEducacion(educacionModificada);
 	}

@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "aptitudes")
 public class Aptitud {
@@ -23,6 +25,7 @@ public class Aptitud {
 
 	@ManyToOne()
 	@JoinColumn(name = "persona_id")
+	@JsonIgnore
 	private Persona persona;
 
 	public Aptitud() {

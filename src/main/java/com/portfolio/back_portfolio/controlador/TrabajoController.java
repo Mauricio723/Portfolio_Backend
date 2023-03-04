@@ -50,13 +50,17 @@ public class TrabajoController {
 		return intTrabajoService.findTrabajo(id);
 	}
 	
-	@PutMapping("/modificar/{id}")
-	public void modificarTrabajo(@PathVariable Integer id, @RequestBody Trabajo trabajoParaModificar) {
-		Trabajo trabajoModificado = intTrabajoService.findTrabajo(id);
+	@PutMapping("/modificar/{id_trabajo}/{id_ciudad}")
+	public void modificarTrabajo(@PathVariable Integer id_trabajo, @PathVariable Long id_ciudad, @RequestBody Trabajo trabajoParaModificar) {
+		Trabajo trabajoModificado = intTrabajoService.findTrabajo(id_trabajo);
 		trabajoModificado.setNombreEmpresa(trabajoParaModificar.getNombreEmpresa());
 		trabajoModificado.setPuestoLaboral(trabajoParaModificar.getPuestoLaboral());
 		trabajoModificado.setAnioInicio(trabajoParaModificar.getAnioInicio());
 		trabajoModificado.setAnioFin(trabajoParaModificar.getAnioFin());		
+		trabajoModificado.setDescripcion(trabajoParaModificar.getDescripcion());
+		trabajoModificado.setCiudad(intCiudadService.findCiudad(id_ciudad));
+		
+		intTrabajoService.saveTrabajo(trabajoModificado);
 	}
 	
 	@DeleteMapping("/eliminar/{id}")
