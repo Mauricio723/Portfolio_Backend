@@ -22,12 +22,17 @@ public class Educacion {
 	@Column(nullable=false, updatable=false)
 	private Integer id;
 	
-	private String nombreInstitucion;
-		
+	@Column(length=60)
+	private String nombreInstitucion;	
+	@Column(length=60)
 	private String estudioCursado;
+	@Column(length=5)
 	private int anioInicio;
+	@Column(length=5)
 	private int anioFin;
+	@Column(length=200)
 	private String descripcionCurso;
+	@Column(length=2)
 	private int seTerminoCurso;
 		 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)

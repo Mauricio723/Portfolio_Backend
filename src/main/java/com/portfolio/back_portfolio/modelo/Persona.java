@@ -30,13 +30,13 @@ public class Persona {
 	@Column(length=50)
 	private String apellido;
 	
-	@Column(length=50)
+	@Column(length=60)
 	private String ocupacion;	
 	
-	@Column(length=50)
+	@Column(length=60)
 	private String tituloPrincipal;
 	
-	@Column(length=50)
+	@Column(length=30)
 	private String fecha_nacimiento;
 	
 	@Column(length=10)
@@ -45,13 +45,13 @@ public class Persona {
 	@Column(length=100)
 	private String email;	
 		
-	@Column(length=100)
+	@Column(length=300)
 	private String acerca_de;	
 	
-	@Column(length=100)
+	@Column(length=160)
 	private String urlFoto;
 	
-	@Column(length=100)
+	@Column(length=160)
 	private String urlBanner;
 		
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)

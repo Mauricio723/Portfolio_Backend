@@ -20,7 +20,9 @@ public class Aptitud {
 	@Column(nullable = false, updatable = false)
 	private Integer id;
 
+	@Column(length=60)
 	private String nombre;
+	@Column(length=200)
 	private String descripcion;
 
 	@ManyToOne()

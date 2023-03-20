@@ -22,10 +22,15 @@ public class Trabajo {
 	@Column(nullable = false, updatable = false)
 	private Integer id;
 
+	@Column(length=50)
 	private String nombreEmpresa;
+	@Column(length=50)
 	private String puestoLaboral;
+	@Column(length=5)
 	private int anioInicio;
+	@Column(length=5)
 	private int anioFin;
+	@Column(length=200)
 	private String descripcion;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
