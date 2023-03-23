@@ -58,6 +58,8 @@ public class TrabajoController {
 		trabajoModificado.setAnioInicio(trabajoParaModificar.getAnioInicio());
 		trabajoModificado.setAnioFin(trabajoParaModificar.getAnioFin());		
 		trabajoModificado.setDescripcion(trabajoParaModificar.getDescripcion());
+		trabajoModificado.setCampoExtraTexto(trabajoParaModificar.getCampoExtraTexto());
+		trabajoModificado.setCampoExtraNumber(trabajoParaModificar.getCampoExtraNumber());
 		trabajoModificado.setCiudad(intCiudadService.findCiudad(id_ciudad));
 		
 		intTrabajoService.saveTrabajo(trabajoModificado);

@@ -48,6 +48,7 @@ public class AptitudController {
 		Aptitud aptitudModificada = intAptitudService.findAptitud(id);
 		aptitudModificada.setNombre(aptitudParaModificar.getNombre());
 		aptitudModificada.setDescripcion(aptitudParaModificar.getDescripcion());
+		aptitudModificada.setPorcentaje(aptitudParaModificar.getPorcentaje());
 		
 		intAptitudService.saveAptitud(aptitudModificada);
 	}

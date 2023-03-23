@@ -53,14 +53,16 @@ public class PersonaController {
 		personaModificada.setApellido(personaParaModificar.getApellido());
 		personaModificada.setOcupacion(personaParaModificar.getOcupacion());
 		personaModificada.setTituloPrincipal(personaParaModificar.getTituloPrincipal());
-		personaModificada.setFecha_nacimiento(personaParaModificar.getFecha_nacimiento());
+		personaModificada.setFechaNacimiento(personaParaModificar.getFechaNacimiento());
 		personaModificada.setDocumento(personaParaModificar.getDocumento());
 		personaModificada.setEmail(personaParaModificar.getEmail());
-		personaModificada.setAcerca_de(personaParaModificar.getAcerca_de());
+		personaModificada.setAcercaDe(personaParaModificar.getAcercaDe());
 		personaModificada.setUrlFoto(personaParaModificar.getUrlFoto());
 		personaModificada.setUrlBanner(personaParaModificar.getUrlBanner());
+		personaModificada.setCampoExtraTexto(personaParaModificar.getCampoExtraTexto());
+		personaModificada.setCampoExtraNumber(personaParaModificar.getCampoExtraNumber());
 		personaModificada.setCiudad(intCiudadService.findCiudad(id_ciudad));
-		
+				
 		intPersonaService.savePersona(personaModificada);				
 	}
 		

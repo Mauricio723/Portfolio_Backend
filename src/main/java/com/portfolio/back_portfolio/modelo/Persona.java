@@ -37,7 +37,7 @@ public class Persona {
 	private String tituloPrincipal;
 	
 	@Column(length=30)
-	private String fecha_nacimiento;
+	private String fechaNacimiento;
 	
 	@Column(length=10)
 	private String documento;    
@@ -46,13 +46,19 @@ public class Persona {
 	private String email;	
 		
 	@Column(length=300)
-	private String acerca_de;	
+	private String acercaDe;	
 	
 	@Column(length=160)
 	private String urlFoto;
 	
 	@Column(length=160)
 	private String urlBanner;
+	
+	@Column(length=100)
+	private String campoExtraTexto;
+	
+	@Column(length=20)
+	private int campoExtraNumber;
 		
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "ciudad_id")
@@ -76,23 +82,25 @@ public class Persona {
 
 	
 	public Persona(Long id, String nombre, String apellido, String ocupacion, String tituloPrincipal,
-			String fecha_nacimiento, String documento, String email, String acerca_de, String urlFoto, String urlBanner,
-			Ciudad ciudad) {
+			       String fechaNacimiento, String documento, String email, String acercaDe, 
+			       String urlFoto, String urlBanner, String campoExtraTexto, int campoExtraNumber,
+			       Ciudad ciudad) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.ocupacion = ocupacion;
 		this.tituloPrincipal = tituloPrincipal;
-		this.fecha_nacimiento = fecha_nacimiento;
+		this.fechaNacimiento = fechaNacimiento;
 		this.documento = documento;
 		this.email = email;
-		this.acerca_de = acerca_de;
+		this.acercaDe = acercaDe;
 		this.urlFoto = urlFoto;
 		this.urlBanner = urlBanner;
+		this.campoExtraTexto = campoExtraTexto;
+		this.campoExtraNumber = campoExtraNumber;
 		this.ciudad = ciudad;
 	}
-
 
 	public Long getId() {
 		return id;
@@ -126,12 +134,12 @@ public class Persona {
 		this.ocupacion = ocupacion;
 	}
 
-	public String getFecha_nacimiento() {
-		return fecha_nacimiento;
+	public String getFechaNacimiento() {
+		return fechaNacimiento;
 	}
 
-	public void setFecha_nacimiento(String fecha_nacimiento) {
-		this.fecha_nacimiento = fecha_nacimiento;
+	public void setFechaNacimiento(String fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
 	}
 
 	public String getDocumento() {
@@ -150,12 +158,12 @@ public class Persona {
 		this.email = email;
 	}
 
-	public String getAcerca_de() {
-		return acerca_de;
+	public String getAcercaDe() {
+		return acercaDe;
 	}
 
-	public void setAcerca_de(String acerca_de) {
-		this.acerca_de = acerca_de;
+	public void setAcercaDe(String acercaDe) {
+		this.acercaDe = acercaDe;
 	}
 
 	public String getUrlFoto() {
@@ -174,46 +182,52 @@ public class Persona {
 		this.urlBanner = urlBanner;
 	}
 
-
 	public String getTituloPrincipal() {
 		return tituloPrincipal;
 	}
-
 
 	public void setTituloPrincipal(String tituloPrincipal) {
 		this.tituloPrincipal = tituloPrincipal;
 	}
 
+	public String getCampoExtraTexto() {
+		return campoExtraTexto;
+	}
+
+	public void setCampoExtraTexto(String campoExtraTexto) {
+		this.campoExtraTexto = campoExtraTexto;
+	}
+
+	public int getCampoExtraNumber() {
+		return campoExtraNumber;
+	}
+
+	public void setCampoExtraNumber(int campoExtraNumber) {
+		this.campoExtraNumber = campoExtraNumber;
+	}
 
 	public Ciudad getCiudad() {
 		return ciudad;
 	}
 
-
 	public void setCiudad(Ciudad ciudad) {
 		this.ciudad = ciudad;
 	}
-
 
 	public List<Educacion> getListaEducacion() {
 		return listaEducacion;
 	}
 
-
 	public List<Trabajo> getListaTrabajos() {
 		return listaTrabajos;
 	}
-
 
 	public List<Proyecto> getListaProyectos() {
 		return listaProyectos;
 	}
 
-
 	public List<Aptitud> getListaAptitudes() {
 		return listaAptitudes;
 	}	
-	
-	
 	
 }

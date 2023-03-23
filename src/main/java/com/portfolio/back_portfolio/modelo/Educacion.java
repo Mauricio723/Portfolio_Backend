@@ -24,6 +24,8 @@ public class Educacion {
 	
 	@Column(length=60)
 	private String nombreInstitucion;	
+	@Column(length=100)
+	private String urlInstitucion;
 	@Column(length=60)
 	private String estudioCursado;
 	@Column(length=5)
@@ -34,6 +36,11 @@ public class Educacion {
 	private String descripcionCurso;
 	@Column(length=2)
 	private int seTerminoCurso;
+	
+	@Column(length=100)
+	private String campoExtraTexto;	
+	@Column(length=20)
+	private int campoExtraNumber;
 		 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "ciudad_id")
@@ -48,16 +55,20 @@ public class Educacion {
 		super();
 	}
 
-	public Educacion(Integer id, String nombreInstitucion, String estudioCursado, int anioInicio, int anioFin,
-			String descripcionCurso, int seTerminoCurso, Ciudad ciudad, Persona persona) {
+	public Educacion(Integer id, String nombreInstitucion, String urlInstitucion, String estudioCursado, 
+			         int anioInicio, int anioFin, String descripcionCurso, int seTerminoCurso, 
+			         String campoExtraTexto, int campoExtraNumber, Ciudad ciudad, Persona persona) {
 		super();
 		this.id = id;
 		this.nombreInstitucion = nombreInstitucion;
+		this.urlInstitucion = urlInstitucion;
 		this.estudioCursado = estudioCursado;
 		this.anioInicio = anioInicio;
 		this.anioFin = anioFin;
 		this.descripcionCurso = descripcionCurso;
 		this.seTerminoCurso = seTerminoCurso;
+		this.campoExtraTexto = campoExtraTexto;
+		this.campoExtraNumber = campoExtraNumber;
 		this.ciudad = ciudad;
 		this.persona = persona;
 	}
@@ -125,6 +136,30 @@ public class Educacion {
 
 	public void setSeTerminoCurso(int seTerminoCurso) {
 		this.seTerminoCurso = seTerminoCurso;
+	}
+	
+	public String getUrlInstitucion() {
+		return urlInstitucion;
+	}
+
+	public void setUrlInstitucion(String urlInstitucion) {
+		this.urlInstitucion = urlInstitucion;
+	}
+
+	public String getCampoExtraTexto() {
+		return campoExtraTexto;
+	}
+
+	public void setCampoExtraTexto(String campoExtraTexto) {
+		this.campoExtraTexto = campoExtraTexto;
+	}
+
+	public int getCampoExtraNumber() {
+		return campoExtraNumber;
+	}
+
+	public void setCampoExtraNumber(int campoExtraNumber) {
+		this.campoExtraNumber = campoExtraNumber;
 	}
 
 	public Persona getPersona() {

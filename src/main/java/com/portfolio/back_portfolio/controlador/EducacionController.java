@@ -58,12 +58,14 @@ public class EducacionController {
 		Educacion educacionModificada = intEducacionService.findEducacion(id_educacion);
 				
 		educacionModificada.setNombreInstitucion(educacionParaModificar.getNombreInstitucion());
-		educacionModificada.setNombreInstitucion(educacionParaModificar.getNombreInstitucion());
+		educacionModificada.setUrlInstitucion(educacionParaModificar.getUrlInstitucion());		
 		educacionModificada.setEstudioCursado(educacionParaModificar.getEstudioCursado());
 		educacionModificada.setAnioInicio(educacionParaModificar.getAnioInicio());
 		educacionModificada.setAnioFin(educacionParaModificar.getAnioFin());
 		educacionModificada.setDescripcionCurso(educacionParaModificar.getDescripcionCurso());
 		educacionModificada.setSeTerminoCurso(educacionParaModificar.getSeTerminoCurso());
+		educacionModificada.setCampoExtraTexto(educacionParaModificar.getCampoExtraTexto());
+		educacionModificada.setCampoExtraNumber(educacionParaModificar.getCampoExtraNumber());
 		educacionModificada.setCiudad(intCiudadService.findCiudad(id_ciudad));
 		
 		intEducacionService.saveEducacion(educacionModificada);

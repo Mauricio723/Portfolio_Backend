@@ -32,6 +32,10 @@ public class Trabajo {
 	private int anioFin;
 	@Column(length=200)
 	private String descripcion;
+	@Column(length=100)
+	private String campoExtraTexto;
+	@Column(length=20)
+	private int campoExtraNumber;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "ciudad_id")
@@ -47,7 +51,7 @@ public class Trabajo {
 	}	
 
 	public Trabajo(Integer id, String nombreEmpresa, String puestoLaboral, int anioInicio, int anioFin,
-			String descripcion, Ciudad ciudad, Persona persona) {
+			String descripcion,String campoExtraTexto, int campoExtraNumber, Ciudad ciudad, Persona persona) {
 		super();
 		this.id = id;
 		this.nombreEmpresa = nombreEmpresa;
@@ -55,6 +59,8 @@ public class Trabajo {
 		this.anioInicio = anioInicio;
 		this.anioFin = anioFin;
 		this.descripcion = descripcion;
+		this.campoExtraTexto = campoExtraTexto;
+		this.campoExtraNumber = campoExtraNumber;
 		this.ciudad = ciudad;
 		this.persona = persona;
 	}
@@ -105,6 +111,24 @@ public class Trabajo {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	
+	
+	public String getCampoExtraTexto() {
+		return campoExtraTexto;
+	}
+
+	public void setCampoExtraTexto(String campoExtraTexto) {
+		this.campoExtraTexto = campoExtraTexto;
+	}
+
+	public int getCampoExtraNumber() {
+		return campoExtraNumber;
+	}
+
+	public void setCampoExtraNumber(int campoExtraNumber) {
+		this.campoExtraNumber = campoExtraNumber;
 	}
 
 	public Persona getPersona() {

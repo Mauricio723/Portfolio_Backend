@@ -24,6 +24,8 @@ public class Aptitud {
 	private String nombre;
 	@Column(length=200)
 	private String descripcion;
+	@Column(length=4)
+	private int porcentaje;
 
 	@ManyToOne()
 	@JoinColumn(name = "persona_id")
@@ -34,11 +36,16 @@ public class Aptitud {
 		super();
 	}
 
-	public Aptitud(Integer id, String nombre, String descripcion, Persona persona) {
+	public Aptitud(Integer id, 
+			       String nombre, 
+			       String descripcion, 
+			       int porcentaje, 
+			       Persona persona) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
+		this.porcentaje = porcentaje;
 		this.persona = persona;
 	}
 
@@ -64,6 +71,14 @@ public class Aptitud {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	
+	public int getPorcentaje() {
+		return porcentaje;
+	}
+
+	public void setPorcentaje(int porcentaje) {
+		this.porcentaje = porcentaje;
 	}
 
 	public Persona getPersona() {
