@@ -10,5 +10,5 @@ public interface IProyectoService {
 	public void saveProyecto(Proyecto proyectoSaved);
 	public void deleteProyecto(Integer id);
 	public Proyecto findProyecto(Integer id);
-	
+		
 }

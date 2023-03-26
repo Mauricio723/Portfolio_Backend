@@ -10,5 +10,5 @@ public interface ITrabajoService {
 	public void saveTrabajo(Trabajo trabajoSaved);
 	public void deleteTrabajo(Integer id);
 	public Trabajo findTrabajo(Integer id);
-	
+		
 }

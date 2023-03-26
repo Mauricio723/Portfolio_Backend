@@ -10,5 +10,5 @@ public interface IAptitudService {
 	public void saveAptitud(Aptitud aptitudSaved);
 	public void deleteAptitud(Integer id);
 	public Aptitud findAptitud(Integer id);
-	
+		
 }

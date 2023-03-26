@@ -1,8 +1,5 @@
 package com.portfolio.back_portfolio.modelo;
 
-
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -63,23 +59,10 @@ public class Persona {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "ciudad_id")
     private Ciudad ciudad;
-	
-	@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Educacion> listaEducacion;
-	
-	@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Trabajo> listaTrabajos;
-	
-	@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Proyecto> listaProyectos;
-	
-	@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Aptitud> listaAptitudes;
-		
+	 		
 	public Persona() {
 		super();
 	}
-
 	
 	public Persona(Long id, String nombre, String apellido, String ocupacion, String tituloPrincipal,
 			       String fechaNacimiento, String documento, String email, String acercaDe, 
@@ -212,22 +195,6 @@ public class Persona {
 
 	public void setCiudad(Ciudad ciudad) {
 		this.ciudad = ciudad;
-	}
-
-	public List<Educacion> getListaEducacion() {
-		return listaEducacion;
-	}
-
-	public List<Trabajo> getListaTrabajos() {
-		return listaTrabajos;
-	}
-
-	public List<Proyecto> getListaProyectos() {
-		return listaProyectos;
-	}
-
-	public List<Aptitud> getListaAptitudes() {
-		return listaAptitudes;
 	}	
 	
 }

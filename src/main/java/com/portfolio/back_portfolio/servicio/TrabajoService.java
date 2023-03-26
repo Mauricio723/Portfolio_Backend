@@ -34,6 +34,6 @@ public class TrabajoService implements ITrabajoService {
 	public Trabajo findTrabajo(Integer id) {
 		Trabajo trabajoFind = repoTrabajo.findById(id).orElse(null);
 		return trabajoFind;
-	}	
+	}
 	
 }

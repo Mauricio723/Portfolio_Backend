@@ -1,5 +1,6 @@
 package com.portfolio.back_portfolio.controlador;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.portfolio.back_portfolio.modelo.Trabajo;
 import com.portfolio.back_portfolio.servicio.ICiudadService;
-import com.portfolio.back_portfolio.servicio.IPersonaService;
 import com.portfolio.back_portfolio.servicio.ITrabajoService;
 
 @RestController
@@ -23,10 +23,7 @@ public class TrabajoController {
 
 	@Autowired
 	private ITrabajoService intTrabajoService;
-	
-	@Autowired
-	private IPersonaService intPersonaService;
-	
+		
 	@Autowired
 	private ICiudadService intCiudadService;
 	
@@ -35,12 +32,21 @@ public class TrabajoController {
 		return intTrabajoService.getTrabajos();
 	}
 	
-	@PostMapping("/crear/{id_persona}/{id_ciudad}")
+	@GetMapping("/traerbypersona/{idPersona}")
+	public List<Trabajo> traerPorIdPersona(@PathVariable Long idPersona) {
+		List<Trabajo> trabajosPorPersona = new ArrayList<>();		
+		for (Trabajo trabajo : intTrabajoService.getTrabajos()) {			
+			if (trabajo.getPersona_id() == idPersona) {
+				trabajosPorPersona.add(trabajo);
+			}
+		}		
+		return trabajosPorPersona;
+	}
+	
+	@PostMapping("/crear/{id_ciudad}")
 	public void crearTrabajo(@RequestBody Trabajo trabajoCreado, 
-			                 @PathVariable Long id_persona, 
 			                 @PathVariable Long id_ciudad) {
-		
-		trabajoCreado.setPersona(intPersonaService.findPersona(id_persona));
+				
 		trabajoCreado.setCiudad(intCiudadService.findCiudad(id_ciudad));
 		intTrabajoService.saveTrabajo(trabajoCreado);
 	}

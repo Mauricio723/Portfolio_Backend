@@ -36,5 +36,4 @@ public class EducacionService implements IEducacionService {
 		return educacionFind;
 	}
 	
-	
 }

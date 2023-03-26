@@ -7,5 +7,5 @@ import com.portfolio.back_portfolio.modelo.Proyecto;
 
 @Repository
 public interface ProyectoRepository extends JpaRepository<Proyecto, Integer> {
-
+	
 }

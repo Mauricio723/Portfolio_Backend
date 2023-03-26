@@ -11,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "trabajos")
 public class Trabajo {
@@ -36,22 +34,20 @@ public class Trabajo {
 	private String campoExtraTexto;
 	@Column(length=20)
 	private int campoExtraNumber;
-
+	
+	@Column(name="persona_id",length=4)
+	private Long persona_id;
+	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "ciudad_id")
 	private Ciudad ciudad;
-
-	@ManyToOne()
-	@JoinColumn(name = "persona_id")
-	@JsonIgnore
-	private Persona persona;
 
 	public Trabajo() {
 		super();
 	}	
 
 	public Trabajo(Integer id, String nombreEmpresa, String puestoLaboral, int anioInicio, int anioFin,
-			String descripcion,String campoExtraTexto, int campoExtraNumber, Ciudad ciudad, Persona persona) {
+			String descripcion,String campoExtraTexto, int campoExtraNumber, Ciudad ciudad, Long persona_id) {
 		super();
 		this.id = id;
 		this.nombreEmpresa = nombreEmpresa;
@@ -62,7 +58,7 @@ public class Trabajo {
 		this.campoExtraTexto = campoExtraTexto;
 		this.campoExtraNumber = campoExtraNumber;
 		this.ciudad = ciudad;
-		this.persona = persona;
+		this.persona_id = persona_id;
 	}
 
 	public Integer getId() {
@@ -111,9 +107,7 @@ public class Trabajo {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-
-	
+	}	
 	
 	public String getCampoExtraTexto() {
 		return campoExtraTexto;
@@ -130,13 +124,13 @@ public class Trabajo {
 	public void setCampoExtraNumber(int campoExtraNumber) {
 		this.campoExtraNumber = campoExtraNumber;
 	}
-
-	public Persona getPersona() {
-		return persona;
+	
+	public Long getPersona_id() {
+		return persona_id;
 	}
 
-	public void setPersona(Persona persona) {
-		this.persona = persona;
+	public void setPersona_id(Long persona_id) {
+		this.persona_id = persona_id;
 	}
 
 	public Ciudad getCiudad() {
@@ -145,6 +139,6 @@ public class Trabajo {
 
 	public void setCiudad(Ciudad ciudad) {
 		this.ciudad = ciudad;
-	}
+	}		
 	
 }

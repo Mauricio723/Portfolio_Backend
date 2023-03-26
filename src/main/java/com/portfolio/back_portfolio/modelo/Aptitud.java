@@ -5,11 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "aptitudes")
@@ -27,11 +24,10 @@ public class Aptitud {
 	@Column(length=4)
 	private int porcentaje;
 
-	@ManyToOne()
-	@JoinColumn(name = "persona_id")
-	@JsonIgnore
-	private Persona persona;
-
+	@Column(name="persona_id",length=4)
+	private Long persona_id;
+	
+	
 	public Aptitud() {
 		super();
 	}
@@ -39,14 +35,14 @@ public class Aptitud {
 	public Aptitud(Integer id, 
 			       String nombre, 
 			       String descripcion, 
-			       int porcentaje, 
-			       Persona persona) {
+			       int porcentaje,
+			       Long persona_id) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.porcentaje = porcentaje;
-		this.persona = persona;
+		this.persona_id = persona_id;
 	}
 
 	public Integer getId() {
@@ -81,12 +77,12 @@ public class Aptitud {
 		this.porcentaje = porcentaje;
 	}
 
-	public Persona getPersona() {
-		return persona;
+	public Long getPersona_id() {
+		return persona_id;
 	}
 
-	public void setPersona(Persona persona) {
-		this.persona = persona;
+	public void setPersona_id(Long persona_id) {
+		this.persona_id = persona_id;
 	}
 
 }

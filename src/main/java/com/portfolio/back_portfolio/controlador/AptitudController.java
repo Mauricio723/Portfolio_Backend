@@ -1,5 +1,6 @@
 package com.portfolio.back_portfolio.controlador;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.portfolio.back_portfolio.modelo.Aptitud;
 import com.portfolio.back_portfolio.servicio.IAptitudService;
-import com.portfolio.back_portfolio.servicio.IPersonaService;
 
 @RestController
 @RequestMapping("/myapi/aptitudes")
@@ -22,19 +21,27 @@ public class AptitudController {
 
 	@Autowired
 	private IAptitudService intAptitudService;
-	
-	@Autowired
-	private IPersonaService intPersonaService;
-	
+		
 	@GetMapping("/traer_todas")
 	public List<Aptitud> traerAptitudes() {
 		List<Aptitud> listaAptitudes = intAptitudService.getAptitudes();
 		return listaAptitudes;
 	}
 	
-	@PostMapping("/crear/{id_persona}")
-	public void crearAptitud(@RequestBody Aptitud aptitudCreada, @PathVariable Long id_persona) {
-		aptitudCreada.setPersona(intPersonaService.findPersona(id_persona));
+	@GetMapping("/traerbypersona/{idPersona}")
+	public List<Aptitud> traerPorIdPersona(@PathVariable Long idPersona) {
+		List<Aptitud> aptitudesPorPersona = new ArrayList<>();		
+		for (Aptitud aptitud : intAptitudService.getAptitudes()) {			
+			if (aptitud.getPersona_id() == idPersona) {
+				aptitudesPorPersona.add(aptitud);
+			}
+		}		
+		return aptitudesPorPersona;
+	}
+	
+	@PostMapping("/crear")
+	public void crearAptitud(@RequestBody Aptitud aptitudCreada) {
+		
 		intAptitudService.saveAptitud(aptitudCreada);
 	}
 	
@@ -42,7 +49,7 @@ public class AptitudController {
 	public Aptitud traerAptitud(@PathVariable Integer id) {
 		return intAptitudService.findAptitud(id);
 	}
-	
+			
 	@PutMapping("/modificar/{id}")
 	public void modificarAptitud (@PathVariable Integer id, @RequestBody Aptitud aptitudParaModificar) {
 		Aptitud aptitudModificada = intAptitudService.findAptitud(id);

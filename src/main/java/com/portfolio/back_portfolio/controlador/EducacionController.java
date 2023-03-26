@@ -1,5 +1,6 @@
 package com.portfolio.back_portfolio.controlador;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.portfolio.back_portfolio.modelo.Educacion;
 import com.portfolio.back_portfolio.servicio.ICiudadService;
 import com.portfolio.back_portfolio.servicio.IEducacionService;
-import com.portfolio.back_portfolio.servicio.IPersonaService;
 
 @RestController
 @RequestMapping("/myapi/educacion")
@@ -23,10 +23,7 @@ public class EducacionController {
 
 	@Autowired
 	private IEducacionService intEducacionService;
-	
-	@Autowired
-	private IPersonaService intPersonaService;
-	
+		
 	@Autowired
 	private ICiudadService intCiudadService;
 	
@@ -35,12 +32,22 @@ public class EducacionController {
 		return intEducacionService.getEducaciones();
 	}
 	
-	@PostMapping("/crear/{id_persona}/{id_ciudad}")
-	public void crearEducacion(@RequestBody Educacion educacionCreada, 
-			                   @PathVariable Long id_persona, 
+	@GetMapping("/traerbypersona/{idPersona}")
+	public List<Educacion> traerPorIdPersona(@PathVariable Long idPersona) {
+		List<Educacion> educacionesPorPersona = new ArrayList<>();		
+		for (Educacion educacion  : intEducacionService.getEducaciones()) {			
+			if (educacion.getPersona_id() == idPersona) {
+				educacionesPorPersona.add(educacion);
+			}
+		}		
+		return educacionesPorPersona;
+	}
+	
+	@PostMapping("/crear/{id_ciudad}")
+	public void crearEducacion(@RequestBody Educacion educacionCreada,
 			                   @PathVariable Long id_ciudad) {
 		
-		educacionCreada.setPersona(intPersonaService.findPersona(id_persona));
+		//educacionCreada.setPersona(intPersonaService.findPersona(id_persona));
 		educacionCreada.setCiudad(intCiudadService.findCiudad(id_ciudad));
 		intEducacionService.saveEducacion(educacionCreada);
 	}

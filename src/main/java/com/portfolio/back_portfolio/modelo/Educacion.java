@@ -11,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="educacion")
@@ -41,23 +40,22 @@ public class Educacion {
 	private String campoExtraTexto;	
 	@Column(length=20)
 	private int campoExtraNumber;
-		 
+	
+	@Column(name="persona_id",length=4)
+	private Long persona_id;
+	
+	
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "ciudad_id")
     private Ciudad ciudad;
-	
-	@ManyToOne()
-	@JoinColumn(name="persona_id")
-	@JsonIgnore
-	private Persona persona;
-	
+	       
 	public Educacion() {
 		super();
 	}
 
 	public Educacion(Integer id, String nombreInstitucion, String urlInstitucion, String estudioCursado, 
 			         int anioInicio, int anioFin, String descripcionCurso, int seTerminoCurso, 
-			         String campoExtraTexto, int campoExtraNumber, Ciudad ciudad, Persona persona) {
+			         String campoExtraTexto, int campoExtraNumber, Long persona_id, Ciudad ciudad) {
 		super();
 		this.id = id;
 		this.nombreInstitucion = nombreInstitucion;
@@ -69,8 +67,8 @@ public class Educacion {
 		this.seTerminoCurso = seTerminoCurso;
 		this.campoExtraTexto = campoExtraTexto;
 		this.campoExtraNumber = campoExtraNumber;
+		this.persona_id = persona_id;
 		this.ciudad = ciudad;
-		this.persona = persona;
 	}
 
 
@@ -162,12 +160,12 @@ public class Educacion {
 		this.campoExtraNumber = campoExtraNumber;
 	}
 
-	public Persona getPersona() {
-		return persona;
+	public Long getPersona_id() {
+		return persona_id;
 	}
 
-	public void setPersona(Persona persona) {
-		this.persona = persona;
-	}		
+	public void setPersona_id(Long persona_id) {
+		this.persona_id = persona_id;
+	}
 	
 }

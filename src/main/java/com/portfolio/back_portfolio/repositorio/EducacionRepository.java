@@ -7,5 +7,5 @@ import com.portfolio.back_portfolio.modelo.Educacion;
 
 @Repository
 public interface EducacionRepository extends JpaRepository<Educacion, Integer> {
-
+	
 }

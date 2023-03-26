@@ -34,6 +34,6 @@ public class AptitudService implements IAptitudService {
 	public Aptitud findAptitud(Integer id) {
 		Aptitud aptitudFind = repoAptitud.findById(id).orElse(null);
 		return aptitudFind;
-	}	
-	
+	}
+		
 }

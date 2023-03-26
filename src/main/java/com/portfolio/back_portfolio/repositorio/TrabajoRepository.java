@@ -7,5 +7,5 @@ import com.portfolio.back_portfolio.modelo.Trabajo;
 
 @Repository
 public interface TrabajoRepository extends JpaRepository<Trabajo, Integer> {
-	
+		
 }

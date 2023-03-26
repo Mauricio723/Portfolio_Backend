@@ -1,5 +1,6 @@
 package com.portfolio.back_portfolio.controlador;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.portfolio.back_portfolio.modelo.Proyecto;
-import com.portfolio.back_portfolio.servicio.IPersonaService;
 import com.portfolio.back_portfolio.servicio.IProyectoService;
 
 @RestController
@@ -22,18 +22,26 @@ public class ProyectoController {
 
 	@Autowired
 	private IProyectoService intProyectoService;
-	
-	@Autowired
-	private IPersonaService intPersonaService;
-	
+		
 	@GetMapping("/traer_todos")
 	public List<Proyecto> getProyectos() {
 		return intProyectoService.getProyectos();
 	}
 	
-	@PostMapping("/crear/{id_persona}")
-	public void crearProyecto(@RequestBody Proyecto proyectoCreado, @PathVariable Long id_persona) {
-		proyectoCreado.setPersona(intPersonaService.findPersona(id_persona));
+	@GetMapping("/traerbypersona/{idPersona}")
+	public List<Proyecto> traerPorIdPersona(@PathVariable Long idPersona) {
+		List<Proyecto> proyectosPorPersona = new ArrayList<>();		
+		for (Proyecto proyecto : intProyectoService.getProyectos()) {			
+			if (proyecto.getPersona_id() == idPersona) {
+				proyectosPorPersona.add(proyecto);
+			}
+		}		
+		return proyectosPorPersona;
+	}
+	
+	@PostMapping("/crear")
+	public void crearProyecto(@RequestBody Proyecto proyectoCreado) {
+				
 		intProyectoService.saveProyecto(proyectoCreado);
 	}
 	

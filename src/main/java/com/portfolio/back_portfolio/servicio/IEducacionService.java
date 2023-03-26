@@ -10,5 +10,5 @@ public interface IEducacionService {
 	public void saveEducacion(Educacion educacionSaved);
 	public void deleteEducacion(Integer id);
 	public Educacion findEducacion(Integer id);
-	
+		
 }

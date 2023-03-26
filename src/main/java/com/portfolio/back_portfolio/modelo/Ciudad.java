@@ -1,11 +1,16 @@
 package com.portfolio.back_portfolio.modelo;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="ciudades")
@@ -20,16 +25,19 @@ public class Ciudad {
 	private String provincia;
 	private String pais;
 	
-	/*
-	@OneToMany(mappedBy = "ciudad")
-	private List<Persona> listaPersonas;
 	
 	@OneToMany(mappedBy = "ciudad")
+	@JsonIgnore
 	private List<Educacion> listaEducacion;
-	
+		
 	@OneToMany(mappedBy = "ciudad")
-	private List<Trabajo> listaTrabajos;         */
-                                           		
+	@JsonIgnore
+	private List<Trabajo> listaTrabajos;
+		
+	@OneToMany(mappedBy = "ciudad")
+	@JsonIgnore
+	private List<Persona> listaPersonas;
+		                                           		
 	public Ciudad() {
 		super();
 	}
