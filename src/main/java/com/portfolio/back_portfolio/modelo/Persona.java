@@ -49,13 +49,7 @@ public class Persona {
 	
 	@Column(length=160)
 	private String urlBanner;
-	
-	@Column(length=100)
-	private String campoExtraTexto;
-	
-	@Column(length=20)
-	private int campoExtraNumber;
-		
+			
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "ciudad_id")
     private Ciudad ciudad;
@@ -66,8 +60,7 @@ public class Persona {
 	
 	public Persona(Long id, String nombre, String apellido, String ocupacion, String tituloPrincipal,
 			       String fechaNacimiento, String documento, String email, String acercaDe, 
-			       String urlFoto, String urlBanner, String campoExtraTexto, int campoExtraNumber,
-			       Ciudad ciudad) {
+			       String urlFoto, String urlBanner, Ciudad ciudad) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -80,8 +73,6 @@ public class Persona {
 		this.acercaDe = acercaDe;
 		this.urlFoto = urlFoto;
 		this.urlBanner = urlBanner;
-		this.campoExtraTexto = campoExtraTexto;
-		this.campoExtraNumber = campoExtraNumber;
 		this.ciudad = ciudad;
 	}
 
@@ -171,23 +162,7 @@ public class Persona {
 
 	public void setTituloPrincipal(String tituloPrincipal) {
 		this.tituloPrincipal = tituloPrincipal;
-	}
-
-	public String getCampoExtraTexto() {
-		return campoExtraTexto;
-	}
-
-	public void setCampoExtraTexto(String campoExtraTexto) {
-		this.campoExtraTexto = campoExtraTexto;
-	}
-
-	public int getCampoExtraNumber() {
-		return campoExtraNumber;
-	}
-
-	public void setCampoExtraNumber(int campoExtraNumber) {
-		this.campoExtraNumber = campoExtraNumber;
-	}
+	}	
 
 	public Ciudad getCiudad() {
 		return ciudad;

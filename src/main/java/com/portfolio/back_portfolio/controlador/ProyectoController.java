@@ -55,6 +55,7 @@ public class ProyectoController {
 		Proyecto proyectoModificado = intProyectoService.findProyecto(id);
 		proyectoModificado.setNombre(proyectoParaModificar.getNombre());
 		proyectoModificado.setDescripcion(proyectoParaModificar.getDescripcion());
+		proyectoModificado.setFechaPublicacion(proyectoParaModificar.getFechaPublicacion());
 		
 		intProyectoService.saveProyecto(proyectoModificado);
 	}

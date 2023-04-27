@@ -16,10 +16,12 @@ public class Proyecto {
 	@Column(nullable=false, updatable=false)
 	private Integer id;
 	
-	@Column(length=60)
+	@Column(length=100)
 	private String nombre;
 	@Column(length=200)
 	private String descripcion;
+	@Column(length=100)
+	private String fechaPublicacion;
 	
 	@Column(name="persona_id",length=4)
 	private Long persona_id;	
@@ -28,11 +30,12 @@ public class Proyecto {
 		super();
 	}
 
-	public Proyecto(Integer id, String nombre, String descripcion, Long persona_id) {
+	public Proyecto(Integer id, String nombre, String descripcion, String fechaPublicacion, Long persona_id) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
+		this.fechaPublicacion = fechaPublicacion;
 		this.persona_id = persona_id;
 	}
 
@@ -58,6 +61,14 @@ public class Proyecto {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	
+	public String getFechaPublicacion() {
+		return fechaPublicacion;
+	}
+
+	public void setFechaPublicacion(String fechaPublicacion) {
+		this.fechaPublicacion = fechaPublicacion;
 	}
 
 	public Long getPersona_id() {

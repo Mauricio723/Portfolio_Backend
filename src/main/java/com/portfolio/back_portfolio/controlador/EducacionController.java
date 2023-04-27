@@ -71,8 +71,7 @@ public class EducacionController {
 		educacionModificada.setAnioFin(educacionParaModificar.getAnioFin());
 		educacionModificada.setDescripcionCurso(educacionParaModificar.getDescripcionCurso());
 		educacionModificada.setSeTerminoCurso(educacionParaModificar.getSeTerminoCurso());
-		educacionModificada.setCampoExtraTexto(educacionParaModificar.getCampoExtraTexto());
-		educacionModificada.setCampoExtraNumber(educacionParaModificar.getCampoExtraNumber());
+		
 		educacionModificada.setCiudad(intCiudadService.findCiudad(id_ciudad));
 		
 		intEducacionService.saveEducacion(educacionModificada);

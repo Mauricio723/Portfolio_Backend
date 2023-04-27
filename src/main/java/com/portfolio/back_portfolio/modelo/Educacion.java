@@ -35,12 +35,7 @@ public class Educacion {
 	private String descripcionCurso;
 	@Column(length=2)
 	private int seTerminoCurso;
-	
-	@Column(length=100)
-	private String campoExtraTexto;	
-	@Column(length=20)
-	private int campoExtraNumber;
-	
+		
 	@Column(name="persona_id",length=4)
 	private Long persona_id;
 	
@@ -55,7 +50,7 @@ public class Educacion {
 
 	public Educacion(Integer id, String nombreInstitucion, String urlInstitucion, String estudioCursado, 
 			         int anioInicio, int anioFin, String descripcionCurso, int seTerminoCurso, 
-			         String campoExtraTexto, int campoExtraNumber, Long persona_id, Ciudad ciudad) {
+			         Long persona_id, Ciudad ciudad) {
 		super();
 		this.id = id;
 		this.nombreInstitucion = nombreInstitucion;
@@ -65,8 +60,7 @@ public class Educacion {
 		this.anioFin = anioFin;
 		this.descripcionCurso = descripcionCurso;
 		this.seTerminoCurso = seTerminoCurso;
-		this.campoExtraTexto = campoExtraTexto;
-		this.campoExtraNumber = campoExtraNumber;
+		
 		this.persona_id = persona_id;
 		this.ciudad = ciudad;
 	}
@@ -142,22 +136,6 @@ public class Educacion {
 
 	public void setUrlInstitucion(String urlInstitucion) {
 		this.urlInstitucion = urlInstitucion;
-	}
-
-	public String getCampoExtraTexto() {
-		return campoExtraTexto;
-	}
-
-	public void setCampoExtraTexto(String campoExtraTexto) {
-		this.campoExtraTexto = campoExtraTexto;
-	}
-
-	public int getCampoExtraNumber() {
-		return campoExtraNumber;
-	}
-
-	public void setCampoExtraNumber(int campoExtraNumber) {
-		this.campoExtraNumber = campoExtraNumber;
 	}
 
 	public Long getPersona_id() {

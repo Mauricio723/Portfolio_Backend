@@ -30,11 +30,7 @@ public class Trabajo {
 	private int anioFin;
 	@Column(length=200)
 	private String descripcion;
-	@Column(length=100)
-	private String campoExtraTexto;
-	@Column(length=20)
-	private int campoExtraNumber;
-	
+		
 	@Column(name="persona_id",length=4)
 	private Long persona_id;
 	
@@ -47,7 +43,7 @@ public class Trabajo {
 	}	
 
 	public Trabajo(Integer id, String nombreEmpresa, String puestoLaboral, int anioInicio, int anioFin,
-			String descripcion,String campoExtraTexto, int campoExtraNumber, Ciudad ciudad, Long persona_id) {
+			String descripcion, Ciudad ciudad, Long persona_id) {
 		super();
 		this.id = id;
 		this.nombreEmpresa = nombreEmpresa;
@@ -55,8 +51,6 @@ public class Trabajo {
 		this.anioInicio = anioInicio;
 		this.anioFin = anioFin;
 		this.descripcion = descripcion;
-		this.campoExtraTexto = campoExtraTexto;
-		this.campoExtraNumber = campoExtraNumber;
 		this.ciudad = ciudad;
 		this.persona_id = persona_id;
 	}
@@ -107,23 +101,7 @@ public class Trabajo {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}	
-	
-	public String getCampoExtraTexto() {
-		return campoExtraTexto;
-	}
-
-	public void setCampoExtraTexto(String campoExtraTexto) {
-		this.campoExtraTexto = campoExtraTexto;
-	}
-
-	public int getCampoExtraNumber() {
-		return campoExtraNumber;
-	}
-
-	public void setCampoExtraNumber(int campoExtraNumber) {
-		this.campoExtraNumber = campoExtraNumber;
-	}
+	}			
 	
 	public Long getPersona_id() {
 		return persona_id;

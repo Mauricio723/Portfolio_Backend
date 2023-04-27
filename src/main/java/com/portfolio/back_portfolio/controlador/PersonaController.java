@@ -59,8 +59,7 @@ public class PersonaController {
 		personaModificada.setAcercaDe(personaParaModificar.getAcercaDe());
 		personaModificada.setUrlFoto(personaParaModificar.getUrlFoto());
 		personaModificada.setUrlBanner(personaParaModificar.getUrlBanner());
-		personaModificada.setCampoExtraTexto(personaParaModificar.getCampoExtraTexto());
-		personaModificada.setCampoExtraNumber(personaParaModificar.getCampoExtraNumber());
+		
 		personaModificada.setCiudad(intCiudadService.findCiudad(id_ciudad));
 				
 		intPersonaService.savePersona(personaModificada);				
