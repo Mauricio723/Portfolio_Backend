@@ -72,7 +72,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         	/* reemplazamos Bearer más el espacio por nada,
         	 * para retornar solo el token */
         	
-            return header.replace("Bearer ", "");
+            return header.replace("Bearer", "");
             
         }
         return null;
