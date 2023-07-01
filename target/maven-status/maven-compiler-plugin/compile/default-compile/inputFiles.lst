@@ -32,6 +32,7 @@ C:\MysAppsSTS\Portfolio_Backend\src\main\java\com\portfolio\back_portfolio\contr
 C:\MysAppsSTS\Portfolio_Backend\src\main\java\com\portfolio\back_portfolio\repositorio\AptitudRepository.java
 C:\MysAppsSTS\Portfolio_Backend\src\main\java\com\portfolio\back_portfolio\security\utilidades\ConfiguracionCors.java
 C:\MysAppsSTS\Portfolio_Backend\src\main\java\com\portfolio\back_portfolio\security\jwt\JwtTokenFilter.java
+C:\MysAppsSTS\Portfolio_Backend\src\main\java\com\portfolio\back_portfolio\controlador\DtoPortController.java
 C:\MysAppsSTS\Portfolio_Backend\src\main\java\com\portfolio\back_portfolio\servicio\IEducacionService.java
 C:\MysAppsSTS\Portfolio_Backend\src\main\java\com\portfolio\back_portfolio\security\repository\UsuarioRepository.java
 C:\MysAppsSTS\Portfolio_Backend\src\main\java\com\portfolio\back_portfolio\controlador\EducacionController.java

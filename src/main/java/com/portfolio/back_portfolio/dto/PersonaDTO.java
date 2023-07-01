@@ -1,14 +1,6 @@
 package com.portfolio.back_portfolio.dto;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-
-import com.portfolio.back_portfolio.modelo.Aptitud;
-import com.portfolio.back_portfolio.modelo.Ciudad;
-import com.portfolio.back_portfolio.modelo.Educacion;
-import com.portfolio.back_portfolio.modelo.Proyecto;
-import com.portfolio.back_portfolio.modelo.Trabajo;
 
 public class PersonaDTO implements Serializable {
 
@@ -17,22 +9,19 @@ public class PersonaDTO implements Serializable {
 	private Long id;	
 	private String nombre;	
 	private String apellido;	
-	private String ocupacion;	
-	private Date fechaNacimiento;	
-	private String documento;	
+	private String tituloPrincipal;
+	private String ocupacion;			
 	private String email;	
-	private String acercaDeMi;	
+	private String acercaDe;	
 	private String urlFoto;	
 	private String urlBanner;	
-	private Ciudad ciudad;	
-	private List<Educacion> listaEducacion;	
-	private List<Trabajo> listaTrabajo;	
-	private List<Proyecto> listaProyecto;	
-	private List<Aptitud> listaAptitud;	
-	
+	private String ciudad;
+	private String provincia;
+	private String pais;
+		
 	public PersonaDTO () {		
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -57,28 +46,20 @@ public class PersonaDTO implements Serializable {
 		this.apellido = apellido;
 	}
 
+	public String getTituloPrincipal() {
+		return tituloPrincipal;
+	}
+
+	public void setTituloPrincipal(String tituloPrincipal) {
+		this.tituloPrincipal = tituloPrincipal;
+	}
+
 	public String getOcupacion() {
 		return ocupacion;
 	}
 
 	public void setOcupacion(String ocupacion) {
 		this.ocupacion = ocupacion;
-	}
-
-	public Date getFechaNacimiento() {
-		return fechaNacimiento;
-	}
-
-	public void setFechaNacimiento(Date fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
-
-	public String getDocumento() {
-		return documento;
-	}
-
-	public void setDocumento(String documento) {
-		this.documento = documento;
 	}
 
 	public String getEmail() {
@@ -89,12 +70,12 @@ public class PersonaDTO implements Serializable {
 		this.email = email;
 	}
 
-	public String getAcercaDeMi() {
-		return acercaDeMi;
+	public String getAcercaDe() {
+		return acercaDe;
 	}
 
-	public void setAcercaDeMi(String acercaDeMi) {
-		this.acercaDeMi = acercaDeMi;
+	public void setAcercaDe(String acercaDe) {
+		this.acercaDe = acercaDe;
 	}
 
 	public String getUrlFoto() {
@@ -113,44 +94,28 @@ public class PersonaDTO implements Serializable {
 		this.urlBanner = urlBanner;
 	}
 
-	public Ciudad getCiudad() {
+	public String getCiudad() {
 		return ciudad;
 	}
 
-	public void setCiudad(Ciudad ciudad) {
+	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
 	}
 
-	public List<Educacion> getListaEducacion() {
-		return listaEducacion;
+	public String getProvincia() {
+		return provincia;
 	}
 
-	public void setListaEducacion(List<Educacion> listaEducacion) {
-		this.listaEducacion = listaEducacion;
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
 	}
 
-	public List<Trabajo> getListaTrabajo() {
-		return listaTrabajo;
+	public String getPais() {
+		return pais;
 	}
 
-	public void setListaTrabajo(List<Trabajo> listaTrabajo) {
-		this.listaTrabajo = listaTrabajo;
-	}
-
-	public List<Proyecto> getListaProyecto() {
-		return listaProyecto;
-	}
-
-	public void setListaProyecto(List<Proyecto> listaProyecto) {
-		this.listaProyecto = listaProyecto;
-	}
-
-	public List<Aptitud> getListaAptitud() {
-		return listaAptitud;
-	}
-
-	public void setListaAptitud(List<Aptitud> listaAptitud) {
-		this.listaAptitud = listaAptitud;
+	public void setPais(String pais) {
+		this.pais = pais;
 	}
 
 	public static long getSerialversionuid() {

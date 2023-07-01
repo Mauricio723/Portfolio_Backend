@@ -40,6 +40,7 @@ com\portfolio\back_portfolio\servicio\PersonaService.class
 com\portfolio\back_portfolio\repositorio\CiudadRepository.class
 com\portfolio\back_portfolio\BackPortfolioApplication.class
 com\portfolio\back_portfolio\servicio\IEducacionService.class
+com\portfolio\back_portfolio\controlador\DtoPortController.class
 com\portfolio\back_portfolio\security\enums\RolNombre.class
 com\portfolio\back_portfolio\security\dto\JwtDto.class
 com\portfolio\back_portfolio\security\dto\LoginUsuario.class
