@@ -1,6 +1,5 @@
 package com.portfolio.back_portfolio;
 
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -21,13 +20,12 @@ public class BackPortfolioApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**")
-				        .allowedOrigins("http://localhost:4200", "https://portfoliomv72.web.app")				        
-				        .allowedMethods("*")
-				        //.allowCredentials(true)
-				        .allowedHeaders("*");				    	        
+				registry.addMapping("/**").allowedOrigins("http://localhost:4200", "https://portfoliomv72.web.app")
+						.allowedMethods("*")
+						// .allowCredentials(true)
+						.allowedHeaders("*");
 			}
 		};
 	}
-	
+		
 }
