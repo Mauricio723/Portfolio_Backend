@@ -17,7 +17,7 @@ import com.portfolio.back_portfolio.modelo.Proyecto;
 import com.portfolio.back_portfolio.servicio.IProyectoService;
 
 @RestController
-@RequestMapping("/myapi/proyectos")
+@RequestMapping("/portfolio/proyectos")
 public class ProyectoController {
 
 	@Autowired

@@ -18,7 +18,7 @@ import com.portfolio.back_portfolio.servicio.ICiudadService;
 import com.portfolio.back_portfolio.servicio.ITrabajoService;
 
 @RestController
-@RequestMapping("/myapi/trabajos")
+@RequestMapping("/portfolio/trabajos")
 public class TrabajoController {
 
 	@Autowired

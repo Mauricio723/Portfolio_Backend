@@ -17,7 +17,7 @@ import com.portfolio.back_portfolio.servicio.ICiudadService;
 import com.portfolio.back_portfolio.servicio.IPersonaService;
 
 @RestController
-@RequestMapping("myapi/personas")
+@RequestMapping("portfolio/personas")
 public class PersonaController {
 
 	@Autowired
@@ -42,6 +42,16 @@ public class PersonaController {
 		return intPersonaService.findPersona(id);
 	}
 	
+	@GetMapping("/traer_por_username/{username}")
+	public Persona traerPersonaPorUsername(@PathVariable String username) {
+		return intPersonaService.findByUsername(username);
+	}
+	
+	@GetMapping("/existe_por_username/{username}")
+	public boolean existePersonaPorUsername(@PathVariable String username) {
+		return intPersonaService.existsByUsername(username);
+	}
+	
 	@PutMapping("/modificar/{id_persona}/{id_ciudad}")
 	public void modificarPersona (@RequestBody Persona personaParaModificar,
 			                      @PathVariable Long id_persona, 
@@ -57,6 +67,7 @@ public class PersonaController {
 		personaModificada.setDocumento(personaParaModificar.getDocumento());
 		personaModificada.setEmail(personaParaModificar.getEmail());
 		personaModificada.setAcercaDe(personaParaModificar.getAcercaDe());
+		personaModificada.setUsername(personaParaModificar.getUsername());
 		personaModificada.setUrlFoto(personaParaModificar.getUrlFoto());
 		personaModificada.setUrlBanner(personaParaModificar.getUrlBanner());
 		

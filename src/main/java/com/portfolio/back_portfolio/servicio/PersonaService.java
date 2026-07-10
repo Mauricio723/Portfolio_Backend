@@ -35,4 +35,14 @@ public class PersonaService implements IPersonaService {
 		return repoPersona.findById(id).orElse(null);		
 	}
 
+	@Override
+	public Persona findByUsername(String username) {
+		return repoPersona.findByUsername(username);
+	}
+
+	@Override
+	public boolean existsByUsername(String username) {		
+		return repoPersona.existsByUsername(username);
+	}
+
 }

@@ -18,7 +18,7 @@ import com.portfolio.back_portfolio.servicio.ICiudadService;
 import com.portfolio.back_portfolio.servicio.IEducacionService;
 
 @RestController
-@RequestMapping("/myapi/educacion")
+@RequestMapping("/portfolio/educacion")
 public class EducacionController {
 
 	@Autowired

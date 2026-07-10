@@ -44,6 +44,9 @@ public class Persona {
 	@Column(length=300)
 	private String acercaDe;	
 	
+	@Column(length=100)
+	private String username;
+	
 	@Column(length=160)
 	private String urlFoto;
 	
@@ -60,7 +63,7 @@ public class Persona {
 	
 	public Persona(Long id, String nombre, String apellido, String ocupacion, String tituloPrincipal,
 			       String fechaNacimiento, String documento, String email, String acercaDe, 
-			       String urlFoto, String urlBanner, Ciudad ciudad) {
+			       String username, String urlFoto, String urlBanner, Ciudad ciudad) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -71,6 +74,7 @@ public class Persona {
 		this.documento = documento;
 		this.email = email;
 		this.acercaDe = acercaDe;
+		this.username = username;
 		this.urlFoto = urlFoto;
 		this.urlBanner = urlBanner;
 		this.ciudad = ciudad;
@@ -138,6 +142,14 @@ public class Persona {
 
 	public void setAcercaDe(String acercaDe) {
 		this.acercaDe = acercaDe;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getUrlFoto() {

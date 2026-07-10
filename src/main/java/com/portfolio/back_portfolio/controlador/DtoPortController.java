@@ -12,13 +12,13 @@ import com.portfolio.back_portfolio.modelo.Persona;
 import com.portfolio.back_portfolio.servicio.PersonaService;
 
 @RestController
-@RequestMapping("/myapi")
+@RequestMapping("/portfolio_dto")
 public class DtoPortController {
 	
 	@Autowired
 	private PersonaService servicioPersona;
 		
-	@GetMapping("/persona_dto/traer/{id_persona}")
+	@GetMapping("/traer_persona_dto/{id_persona}")
 	@ResponseBody
 	public PersonaDTO obtenerPersonaDto(@PathVariable Long id_persona) {
 		
@@ -42,5 +42,31 @@ public class DtoPortController {
 		return dtoPersona;
 		
 	}
+	
+	@GetMapping("/traer_persona_dto_por_username/{username}")
+	@ResponseBody
+	public PersonaDTO obtenerPersonaDtoPorUsername(@PathVariable String username) {
+		
+		Persona persona = servicioPersona.findByUsername(username);
+		
+		PersonaDTO dtoPersona = new PersonaDTO();
+		
+		dtoPersona.setId(persona.getId());
+		dtoPersona.setNombre(persona.getNombre());
+		dtoPersona.setApellido(persona.getApellido());
+		dtoPersona.setTituloPrincipal(persona.getTituloPrincipal());
+		dtoPersona.setOcupacion(persona.getOcupacion());
+		dtoPersona.setEmail(persona.getEmail());
+		dtoPersona.setAcercaDe(persona.getAcercaDe());
+		dtoPersona.setUrlFoto(persona.getUrlFoto());
+		dtoPersona.setUrlBanner(persona.getUrlBanner());
+		dtoPersona.setCiudad(persona.getCiudad().getNombre());
+		dtoPersona.setProvincia(persona.getCiudad().getProvincia());
+		dtoPersona.setPais(persona.getCiudad().getPais());
+		
+		return dtoPersona;
+		
+	}
+	
 		
 }

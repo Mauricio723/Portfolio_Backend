@@ -16,7 +16,7 @@ import com.portfolio.back_portfolio.modelo.Aptitud;
 import com.portfolio.back_portfolio.servicio.IAptitudService;
 
 @RestController
-@RequestMapping("/myapi/aptitudes")
+@RequestMapping("/portfolio/aptitudes")
 public class AptitudController {
 
 	@Autowired

@@ -10,5 +10,7 @@ public interface IPersonaService {
 	public void savePersona(Persona personaSaved);
 	public void deletePersona(Long id);
 	public Persona findPersona(Long id);
+	public Persona findByUsername(String username);
+	public boolean existsByUsername(String username);
 
 }

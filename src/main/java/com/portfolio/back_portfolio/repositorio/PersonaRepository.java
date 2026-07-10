@@ -8,4 +8,8 @@ import com.portfolio.back_portfolio.modelo.Persona;
 @Repository
 public interface PersonaRepository extends JpaRepository<Persona, Long> {
 
+	Persona findByUsername(String username);
+	
+	boolean existsByUsername(String username);
+	
 }
